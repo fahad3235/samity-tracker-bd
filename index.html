@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Samity Tracker BD</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <h1 id="appTitle">Samity Tracker BD</h1>
+    <p id="appSub" class="sub"></p>
+    <button id="langBtn" class="lang-btn" type="button">BN</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="setupCard" class="card">
+    <h2 id="setupTitle"></h2>
+    <p id="setupHint" class="hint"></p>
+    <label class="field"><span id="lblGroupName"></span>
+      <input id="groupName" type="text" maxlength="60" autocomplete="off">
+    </label>
+    <label class="field"><span id="lblContribution"></span>
+      <input id="contribution" type="text" inputmode="decimal" autocomplete="off" placeholder="5000">
+    </label>
+    <label class="field"><span id="lblStartMonth"></span>
+      <input id="startMonth" type="month" value="2026-10">
+    </label>
+    <label class="field"><span id="lblMembers"></span>
+      <textarea id="memberNames" rows="5" placeholder="Rahim&#10;Karim&#10;Sumon"></textarea>
+    </label>
+    <p id="setupError" class="error" hidden></p>
+    <button id="createBtn" class="primary" type="button"></button>
+  </section>
+
+  <section id="appCard" class="card" hidden>
+    <div class="group-head">
+      <div>
+        <h2 id="groupNameOut"></h2>
+        <p id="groupMeta" class="hint"></p>
+      </div>
+      <button id="resetGroupBtn" class="danger-outline" type="button"></button>
+    </div>
+
+    <div class="stats" id="statsGrid">
+      <div class="stat"><span class="stat-label" id="stPot"></span><strong id="vPot"></strong></div>
+      <div class="stat"><span class="stat-label" id="stCollected"></span><strong id="vCollected"></strong></div>
+      <div class="stat"><span class="stat-label" id="stOutstanding"></span><strong id="vOutstanding"></strong></div>
+      <div class="stat"><span class="stat-label" id="stRate"></span><strong id="vRate"></strong></div>
+      <div class="stat"><span class="stat-label" id="stRecipient"></span><strong id="vRecipient"></strong></div>
+      <div class="stat"><span class="stat-label" id="stNext"></span><strong id="vNext"></strong></div>
+    </div>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="members" type="button" id="tabMembers"></button>
+      <button class="tab" data-tab="contrib" type="button" id="tabContrib"></button>
+      <button class="tab" data-tab="rotation" type="button" id="tabRotation"></button>
+      <button class="tab" data-tab="data" type="button" id="tabData"></button>
+    </nav>
+
+    <div id="pane-members" class="pane">
+      <div class="row">
+        <input id="newMemberName" type="text" maxlength="60" autocomplete="off">
+        <button id="addMemberBtn" class="primary" type="button"></button>
+      </div>
+      <p id="memberError" class="error" hidden></p>
+      <div class="table-scroll"><table id="memberTable">
+        <thead><tr><th id="thMember"></th><th id="thPaid"></th><th id="thDue"></th><th id="thOut"></th><th></th></tr></thead>
+        <tbody id="memberBody"></tbody>
+      </table></div>
+      <p id="memberNote" class="hint"></p>
+    </div>
+
+    <div id="pane-contrib" class="pane" hidden>
+      <div class="row">
+        <button id="addMonthBtn" class="primary" type="button"></button>
+        <span id="contribHint" class="hint"></span>
+      </div>
+      <p id="contribEmpty" class="hint" hidden></p>
+      <div class="table-scroll"><table id="contribTable">
+        <thead id="contribHead"></thead>
+        <tbody id="contribBody"></tbody>
+      </table></div>
+    </div>
+
+    <div id="pane-rotation" class="pane" hidden>
+      <p id="rotationHint" class="hint"></p>
+      <div class="table-scroll"><table id="rotationTable">
+        <thead><tr><th id="thMonth"></th><th id="thReceiver"></th><th id="thCycle"></th><th id="thPayout"></th><th></th></tr></thead>
+        <tbody id="rotationBody"></tbody>
+      </table></div>
+    </div>
+
+    <div id="pane-data" class="pane" hidden>
+      <div class="row">
+        <button id="exportBtn" class="primary" type="button"></button>
+        <label class="file-label"><span id="importLabel"></span>
+          <input id="importFile" type="file" accept="application/json,.json" hidden>
+        </label>
+      </div>
+      <p id="dataMsg" class="hint" hidden></p>
+      <hr>
+      <p id="eraseHint" class="hint"></p>
+      <div class="row">
+        <input id="eraseConfirm" type="text" autocomplete="off" placeholder="DELETE">
+        <button id="eraseBtn" class="danger" type="button"></button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot"><p id="footNote"></p></footer>
+</main>
+
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
